@@ -1,7 +1,7 @@
 import { useGLTF,useTexture,Float } from "@react-three/drei"
 
 export function Model(props) {
-  const { nodes } = useGLTF("/roommodel001.glb")
+  const { nodes } = useGLTF("/roommodel002.glb")
   
   const bakedTexture = useTexture('./bake_001.jpg')
   const bakedTexture2 = useTexture('./bake_003.jpg')
@@ -28,4 +28,4 @@ export function Model(props) {
 </>
 }
 
-useGLTF.preload("/roommodel001.glb")
+useGLTF.preload("/roommodel002.glb")
