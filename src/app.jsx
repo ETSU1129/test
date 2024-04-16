@@ -8,13 +8,10 @@ import { Model as Room } from "./Room"
 
 export default function App() {
   return (
-      
       <Canvas>
       <color attach="background" args={["#121e2b"]} />
       <fog attach="fog" args={["#d0d0d0", 1, 17]} />
       <PerspectiveCamera makeDefault position={[0, 0, 5]} />
-
-
       <PresentationControls
                   global={true}
                   rotation={ [ 0, 0, 0 ] }
