@@ -1,14 +1,35 @@
 import { useGLTF,useTexture,Float } from "@react-three/drei"
-
-export function Model(props) {
+import {motion}from "framer-motion-3d"
+import { useControls } from 'leva'
+export function Model() {
   const { nodes } = useGLTF("/roommodel002.glb")
   
   const bakedTexture = useTexture('./bake_001.jpg')
   const bakedTexture2 = useTexture('./bake_003.jpg')
   bakedTexture.flipY = false
   bakedTexture2.flipY = false
+  const { rotationY,positionZ,positionY } = useControls({
+    rotationY: {
+        value: 0.2, // 初期値
+        min: -10, // 最小値
+        max: 10, // 最大値
+    },
+    positionZ: {
+        value: 0, // 初期値
+        min: -10, // 最小値
+        max: 10, // 最大値
+        },
+    positionY: {
+        value: -0.4, // 初期値
+        min: -10, // 最小値
+        max: 10, // 最大値
+        },
+
+    
+  })
   console.log(nodes);
   return <>
+            <motion.group rotation-y={[rotationY]}position-z={[positionZ]}position-y={[positionY]}>
             <mesh geometry={ nodes.bakedmodel1.geometry }
             scale={0.2}
             rotation-y={-1}
@@ -25,6 +46,7 @@ export function Model(props) {
             position-y={-0.5}>
                 <meshBasicMaterial map={ bakedTexture2 } />
             </mesh>
+            </motion.group>
 </>
 }
 
